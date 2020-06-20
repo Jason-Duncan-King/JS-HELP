@@ -1,0 +1,25 @@
+$S = "";
+foreach ($_POST AS $K1 => $V1) {
+  if (is_array($V1)) {  // If array
+    $S = $S . "ARRAY:" .$K1 . '<br>';
+    foreach ($V1 AS $K2 => $V2) {
+      if (is_array($V2)) {  // If array
+        $S = $S . "  ARRAY:" .$K2 . '<br>';
+        foreach ($V2 AS $K3 => $V3) {
+          if (is_array($V3)) {  // If array
+            $S = $S . "    ARRAY:" .$K3 . '<br>';
+          } else { // If Key Value
+            $S = $S . "    " . $K3 . ':"' . $V3 . '"<br>';
+          }
+        }
+
+          } else { // If Key Value
+        $S = $S . "  " . $K2 . ':"' . $V2 . '"<br>';
+      }
+    }
+  } else { // If Key Value
+    $S = $S . "" . $K1 . ':"' . $V1 . '"<br>';
+  }
+}
+
+echo("<pre>" .  $S . "</pre>");
